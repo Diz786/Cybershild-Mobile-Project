@@ -1,0 +1,330 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Shield Mobile - Next-Gen Privacy & Device Guardian</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            base: '#070a13',
+                            surface: '#0f172a',
+                            card: 'rgba(15, 23, 42, 0.75)',
+                            border: 'rgba(56, 189, 248, 0.18)',
+                            glow: '#00f2fe',
+                            neonBlue: '#38bdf8',
+                            neonGreen: '#00f260',
+                            neonAmber: '#f59e0b',
+                            neonRed: '#ef4444',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #070a13;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.5) 0%, transparent 100%);
+            color: #f1f5f9;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.72);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(56, 189, 248, 0.14);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 35px 0 rgba(0, 242, 254, 0.08);
+        }
+
+        .glow-cyan {
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
+        }
+
+        .glow-red {
+            box-shadow: 0 0 24px rgba(239, 68, 68, 0.45);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+
+        /* Pulse ring animation */
+        @keyframes cyber-pulse {
+            0% { transform: scale(0.98); opacity: 0.8; }
+            50% { transform: scale(1.02); opacity: 1; filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.6)); }
+            100% { transform: scale(0.98); opacity: 0.8; }
+        }
+        .pulse-active {
+            animation: cyber-pulse 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen text-slate-200 selection:bg-cyan-500/30 selection:text-cyan-200">
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-40 border-b border-cyan-500/15 bg-slate-950/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                    <i data-lucide="shield-alert" class="w-6 h-6 text-slate-950 stroke-[2.5]"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-heading font-bold text-lg tracking-wider text-white">CYBER<span class="text-cyan-400">SHIELD</span></span>
+                        <span class="text-[10px] font-mono tracking-widest px-2 py-0.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-500/30">MOBILE v2.4</span>
+                    </div>
+                    <p class="text-xs text-slate-400">Mobile: Your Privacy, Your Shield</p>
+                </div>
+            </div>
+
+            <!-- Header Action Controls -->
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>LIVE SENTINEL: ON</span>
+                </div>
+
+                <!-- Emergency Decoy Button -->
+                <button onclick="openPanicModal()" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-red-600/20 hover:bg-red-600/30 border border-red-500/40 text-red-300 text-xs font-semibold tracking-wide transition-all shadow-md hover:shadow-red-500/20 active:scale-95">
+                    <i data-lucide="lock-keyhole" class="w-3.5 h-3.5 text-red-400"></i>
+                    <span>EMERGENCY LOCK</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+        <!-- Top Overview & Health Score Hero -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+            <!-- Circular Cyber Health Dial -->
+            <div class="lg:col-span-4 glass-panel rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="font-heading font-semibold text-slate-100 flex items-center gap-2">
+                            <i data-lucide="heart-pulse" class="w-4 h-4 text-cyan-400"></i> Cyber Health Score
+                        </h2>
+                        <p class="text-xs text-slate-400">Real-time mobile attack surface evaluation</p>
+                    </div>
+                    <span id="healthBadge" class="px-2.5 py-1 text-xs font-mono font-medium rounded-full bg-cyan-950 text-cyan-300 border border-cyan-500/30">OPTIMAL</span>
+                </div>
+
+                <!-- Circular Gauge -->
+                <div class="my-6 flex flex-col items-center justify-center relative">
+                    <div class="relative w-44 h-44 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                            <!-- Background Circle -->
+                            <circle cx="50" cy="50" r="42" fill="transparent" stroke="rgba(255,255,255,0.06)" stroke-width="8"></circle>
+                            <!-- Animated Value Circle -->
+                            <circle id="scoreRing" cx="50" cy="50" r="42" fill="transparent" stroke="url(#scoreGrad)" stroke-width="8" stroke-dasharray="264" stroke-dashoffset="26" stroke-linecap="round" class="transition-all duration-1000 ease-out"></circle>
+                            <defs>
+                                <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00f260"></stop>
+                                    <stop offset="100%" stop-color="#00f2fe"></stop>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
+                            <span id="scoreText" class="text-4xl font-heading font-bold text-white tracking-tight">92</span>
+                            <span class="text-[11px] font-mono uppercase tracking-widest text-slate-400">/ 100 PTS</span>
+                        </div>
+                    </div>
+                    <p id="auditStatusLabel" class="text-xs text-slate-400 text-center font-mono mt-1">All hardware shields operational</p>
+                </div>
+
+                <!-- Deep Scan Trigger -->
+                <button id="deepScanBtn" onclick="runDeepAudit()" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 active:scale-[0.98] transition">
+                    <i data-lucide="radar" class="w-4 h-4 stroke-[2.5]" id="scanIcon"></i>
+                    <span id="scanBtnText">Run Deep Privacy Audit</span>
+                </button>
+            </div>
+
+            <!-- Quick Metrics & Status Banner -->
+            <div class="lg:col-span-8 flex flex-col justify-between space-y-4">
+                <!-- Highlight Ticker -->
+                <div class="glass-panel rounded-2xl p-5 border-l-4 border-l-cyan-400">
+                    <div class="flex items-start justify-between flex-wrap gap-4">
+                        <div>
+                            <span class="text-xs uppercase tracking-wider font-mono text-cyan-400">Autonomous Defense Matrix</span>
+                            <h3 class="text-lg font-heading font-semibold text-white mt-0.5">Device Perimeter Safeguarded</h3>
+                            <p class="text-xs text-slate-300 mt-1 max-w-2xl">
+                                Zero-trust permission watcher is actively monitoring background audio, hardware camera traps, and suspicious network handshakes.
+                            </p>
+                        </div>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs font-mono text-slate-300 flex items-center gap-1.5">
+                                <i data-lucide="cpu" class="w-3.5 h-3.5 text-cyan-400"></i> Local Engine: Active
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 Quick Stats Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="glass-panel rounded-2xl p-4">
+                        <div class="flex items-center justify-between text-slate-400">
+                            <span class="text-xs font-mono">APP AUDITS</span>
+                            <i data-lucide="layers" class="w-4 h-4 text-cyan-400"></i>
+                        </div>
+                        <div class="text-2xl font-bold font-heading text-white mt-2">64 <span class="text-xs text-emerald-400 font-mono font-normal">Clean</span></div>
+                        <p class="text-[11px] text-slate-400 mt-1">2 apps with high permissions</p>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-4">
+                        <div class="flex items-center justify-between text-slate-400">
+                            <span class="text-xs font-mono">SCAM BLOCKS</span>
+                            <i data-lucide="filter" class="w-4 h-4 text-emerald-400"></i>
+                        </div>
+                        <div class="text-2xl font-bold font-heading text-white mt-2" id="blockStat">138</div>
+                        <p class="text-[11px] text-slate-400 mt-1">Malicious requests intercepted</p>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-4">
+                        <div class="flex items-center justify-between text-slate-400">
+                            <span class="text-xs font-mono">NET INTEGRITY</span>
+                            <i data-lucide="wifi" class="w-4 h-4 text-amber-400"></i>
+                        </div>
+                        <div class="text-2xl font-bold font-heading text-white mt-2" id="netStatusStat">Secure</div>
+                        <p class="text-[11px] text-slate-400 mt-1">No ARP spoofing detected</p>
+                    </div>
+                </div>
+
+                <!-- URL & Link Sandbox Quick-Check -->
+                <div class="glass-panel rounded-2xl p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="link" class="w-4 h-4 text-cyan-400"></i>
+                        <span class="text-xs font-heading font-semibold text-slate-200">Suspicious SMS / QR Link Scanner</span>
+                        <span class="text-[10px] text-slate-400 font-mono">Sandbox AI Check</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="relative flex-1">
+                            <input id="urlInput" type="text" placeholder="Paste link (e.g., https://secure-bank-login-update.cc)" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-3.5 py-2 text-xs font-mono text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition">
+                        </div>
+                        <button onclick="scanLink()" class="px-4 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/40 text-cyan-300 text-xs font-semibold tracking-wider transition active:scale-95 flex items-center gap-1.5 whitespace-nowrap">
+                            <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                            <span>Analyze</span>
+                        </button>
+                    </div>
+                    <!-- Analysis Result Area -->
+                    <div id="linkResultBox" class="hidden mt-2 p-2.5 rounded-lg text-xs font-mono flex items-center justify-between">
+                        <div class="flex items-center gap-2" id="linkResultContent">
+                            <!-- Filled dynamically -->
+                        </div>
+                        <button onclick="closeLinkResult()" class="text-slate-400 hover:text-white text-xs">✕</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 Core Functional Modules Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- 1. Smart Privacy Camera & Mic Shield -->
+            <div class="glass-panel rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between">
+                <div>
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
+                                <i data-lucide="camera" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-semibold text-base text-white">Smart Camera & Mic Shield</h3>
+                                <p class="text-xs text-slate-400">Physical sensor access traps & passive alert indicator</p>
+                            </div>
+                        </div>
+                        <span id="camMicStatus" class="px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">ARMED</span>
+                    </div>
+
+                    <!-- Sensor Switch Rows -->
+                    <div class="mt-6 space-y-3">
+                        <!-- Camera Row -->
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-cyan-400">
+                                    <i data-lucide="video" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-semibold text-slate-200">Hardware Camera Trap</div>
+                                    <div class="text-[11px] text-slate-400">Block unauthorized background captures</div>
+                                </div>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="cameraToggle" checked onchange="toggleSensor('camera')" class="sr-only peer">
+                                <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500"></div>
+                            </label>
+                        </div>
+
+                        <!-- Mic Row -->
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-cyan-400">
+                                    <i data-lucide="mic" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-semibold text-slate-200">Microphone Eavesdrop Sentinel</div>
+                                    <div class="text-[11px] text-slate-400">Detect covert background audio recording</div>
+                                </div>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="micToggle" checked onchange="toggleSensor('mic')" class="sr-only peer">
+                                <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Demo Trigger -->
+                <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between gap-3">
+                    <span class="text-[11px] text-slate-400 font-mono">Test Camera Shield Defense:</span>
+                    <button onclick="simulateCameraWakeup()" class="px-3 py-1.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-300 text-xs font-semibold tracking-wide transition flex items-center gap-1.5 active:scale-95">
+                        <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-amber-400"></i>
+                        <span>Simulate Rogue App</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 2. Public Wi-Fi Risk Score & Vulnerability Probe -->
+            <div class="glass-panel rounded-2xl p-6 flex flex-col justify-b
